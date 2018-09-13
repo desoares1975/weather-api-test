@@ -18,7 +18,7 @@ Não faça um fork do projeto, você pode fazer um clone e subir em seu próprio
 
 Faça commits durante o desenvolvimento do projeto, é importante para analisarmos a sua linha de pensamento.
 
-Você somente deve utilizar como base os dois arquivos contidos dentro do diretório ./data.
+Você somente deve utilizar como base os dois arquivos "city_list.json" e "weather_list.json".
 
 ## O que iremos analisar analisar:
 - Seu conhecimento geral sobre APIs REST
