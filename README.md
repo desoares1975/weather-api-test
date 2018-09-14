@@ -8,9 +8,11 @@
 - Lista de cidades que possuem um clima disponível com a informação do clima
 - Visualizar uma cidade X com o seu clima
 - Visualizar uma cidade X com o seu clima e filtrar o clima em um range de tempo Ex. (2017-03-12 até 2017-03-21)
-- (Bonus) Filtrar a lista de cidades por latitudes e longitudes
-- (Bonus) Documentação
-- (Bonus) Desenvolvimento do teste em mais uma linguagem à sua escolha
+
+### Bonus
+- Filtrar a lista de cidades por latitudes e longitudes
+- Documentação
+- Desenvolvimento do teste em mais uma linguagem à sua escolha
 
 ## Desenvolvimento
 
