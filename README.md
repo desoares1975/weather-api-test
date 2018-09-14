@@ -12,7 +12,7 @@
 ### Bonus
 - Filtrar a lista de cidades por latitude e longitude
 - Documentação
-- Desenvolvimento do teste em mais uma linguagem à sua escolha
+- Desenvolvimento da api em mais uma linguagem à sua escolha
 
 ## Desenvolvimento
 
