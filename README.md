@@ -10,7 +10,7 @@
 - Visualizar uma cidade X com o seu clima e filtrar o clima em um range de tempo Ex. (2017-03-12 até 2017-03-21)
 
 ### Bonus
-- Filtrar a lista de cidades por latitudes e longitudes
+- Filtrar a lista de cidades por latitude e longitude
 - Documentação
 - Desenvolvimento do teste em mais uma linguagem à sua escolha
 
