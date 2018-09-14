@@ -22,7 +22,7 @@ Faça commits durante o desenvolvimento do projeto, é importante para analisarm
 
 Você somente deve utilizar como base os dois arquivos "city_list.json" e "weather_list.json".
 
-## O que iremos analisar analisar:
+## O que iremos analisar:
 - Seu conhecimento geral sobre APIs REST
 - Como você organiza/estrutura seu código
 - Sua habilidade de entender uma documentação
