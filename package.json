@@ -1,0 +1,32 @@
+{
+  "name": "weather-api-test",
+  "version": "0.0.1",
+  "description": "Teste ministrado pela vá de taxi",
+  "main": "weather-api.js",
+  "scripts": {
+    "test": "nodemon --exec mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desoares1975/weather-api-test.git"
+  },
+  "author": "desoares1975",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/desoares1975/weather-api-test/issues"
+  },
+  "homepage": "https://github.com/desoares1975/weather-api-test#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "standard": "^12.0.1",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "node-cache": "^4.2.0"
+  }
+}
