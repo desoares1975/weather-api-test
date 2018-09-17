@@ -192,9 +192,7 @@ Will return an array with all the cities that have weather list
 
 ####GET /cities/:id
 Will return the city corresponding to the id sent as paramether:
-/**
 /cities/3992619
-*/
 ```json
 {
     "id": 3992619,
@@ -301,9 +299,9 @@ Will return the city corresponding to the id sent as paramether:
 }
 ```
 ####GET /cities/:id/:start/:end
-/**
+
 /cities/3992619/2017-03-13/2017-03-15
-*/
+
 Will return the city corresponding to the id with its weather filtered from the stat till the end period
 ```json
 {
