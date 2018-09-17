@@ -1,4 +1,4 @@
-
+'use strict'
 
 const data = require('../data')
 const { expect } = require('chai')
@@ -8,8 +8,12 @@ describe('Data testing', () => {
     expect(data.cities.length).to.equal(48)
     done()
   })
-  it('data.weather should have length of 2', done => {
-    expect(data.weather.length).to.equal(2)
+  it('data.cities[0] should have wether with lenght of 16', done => {
+    expect(data.cities[0].weather.length).to.equal(16)
+    done()
+  })
+  it('data.weatheredCities should have length of 2', done => {
+    expect(data.weatheredCities.length).to.equal(2)
     done()
   })
 })

@@ -9,3 +9,5 @@ app.use(bodyParser.urlencoded({ extended: true }))
 require('./router')(app)
 
 app.listen(process.env.PORT, () => console.log('Weather application up on port', process.env.PORT))
+
+module.exports = app

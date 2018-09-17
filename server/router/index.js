@@ -3,23 +3,16 @@
 const data = require('../../data')
 
 module.exports = app => {
-  app.get('/', (req, res) => res.status(200).json('WELLCOME'))
   app.get('/cities', (req, res) => res.status(200).json(data.cities))
-  app.get('/cities/weather', (req, res) => {
-    let weathers = {}
-    let weatheredCities = data.weather.map(w => {
-      weathers[w.cityId] = w.data
-      return w.cityId
-    })
+  app.get('/cities/weather', (req, res) => res.status(200).json(data.weatheredCities))
+  app.get('/cities/:id', (req, res) => res.status(200).json(data.cities.filter(c => c.id === +req.params.id)[0]))
+  app.get('/cities/:id/:start/:end', (req, res) => {
+    let city = data.cities.filter(c => c.id === +req.params.id)[0]
 
-    console.log()
-    let response = data.cities
-      .filter(city => weatheredCities.includes(city.id))
-      .map(city => {
-        console.log(weathers[city.id], city.id)
-        city.weather = weathers[city.id]
-        return city
-      })
-    res.status(200).json(response)
+    if (city.weather && city.weather.length) {
+      city.weather = city.weather.filter(w => ((w.dt >= (new Date(req.params.start) / 1000)) && (w.dt <= (new Date(req.params.end) / 1000))))
+    }
+
+    res.status(200).json(city)
   })
 }
