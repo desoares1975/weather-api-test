@@ -6,6 +6,7 @@ module.exports = app => {
   app.get('/cities', (req, res) => res.status(200).json(data.cities()))
   app.get('/cities/weather', (req, res) => res.status(200).json(data.weatheredCities()))
   app.get('/cities/:id', (req, res) => res.status(200).json(data.cities().filter(c => c.id === +req.params.id)[0] || {}))
+  app.get('/cities/:lat/:lon', (req, res) => res.status(200).json(data.cities().filter(c => c.coord.lat === +req.params.lat && c.coord.lon === +req.params.lon)[0] || {}))
   app.get('/cities/:id/:start/:end', (req, res) => {
     let city = data.cities().filter(c => c.id === +req.params.id)[0]
     let weathers = data.weatherList()[city.id] || []

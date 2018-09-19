@@ -110,4 +110,18 @@ describe('Test the app routes', () => {
         done()
       })
   })
+  it('Should should find city', done => {
+    request(app)
+      .get('/cities/-32.856789/-61.153309')
+      .expect(200)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body).to.be.an('object')
+        expect(data.body.id).to.equal(3862655)
+        done()
+      })
+  })
 })
