@@ -9,7 +9,7 @@ describe('Data testing', () => {
     done()
   })
   it('data.cities[0] should have wether with lenght of 16', done => {
-    expect(data.cities()[0].weather.length).to.equal(16)
+    expect(data.cities()[0].weather).to.equal(undefined)
     done()
   })
   it('data.weatheredCities should have wether with lenght of 2', done => {
