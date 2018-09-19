@@ -9,8 +9,11 @@ const weatheredCities = weather.map(w => {
 })
 
 module.exports = {
-  cities,
-  weatheredCities: cities
+  cities: () => cities.map(c => {
+    delete c.weather
+    return c
+  }),
+  weatheredCities: () => cities.slice()
     .filter(city => weatheredCities.includes(city.id))
     .map(city => {
       city.weather = weatherList[city.id]
