@@ -191,9 +191,12 @@ Will return an array with all the cities that have weather list
 ```
 
 ####GET /cities/:id
+
+e.g. /cities/3992619
+
 Will return the city corresponding to the id sent as paramether, with the corresponding weather, or an empty JSON object
 (if the city has no weather it will be an empty array):
-e.g. /cities/3992619
+
 ```json
 {
     "id": 3992619,
@@ -299,6 +302,7 @@ e.g. /cities/3992619
     ]
 }
 ```
+
 ####GET /cities/:id/:start/:end
 
 e.g. /cities/3992619/2017-03-13/2017-03-15
@@ -412,7 +416,9 @@ JSON object (if the filter remove all the dates wethaer will be am empty array):
 ```
 
 ####GET /cities/:lat/:lon
+
 e.g. /cities/19.85/-90.533333
+
 Will return the city on the coodinates, with the corresponding weather, or an empty JSON
 (if the city has no weather it will be an empty array):
 
