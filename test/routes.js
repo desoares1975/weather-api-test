@@ -15,7 +15,6 @@ describe('Test the app routes', () => {
         }
 
         expect(data.body.length).to.equal(48)
-        expect(data.body[0].weather.length).to.equal(16)
         expect(data.body[0].id).to.equal(3531732)
         done()
       })
@@ -47,7 +46,25 @@ describe('Test the app routes', () => {
         }
 
         expect(data.body).to.be.an('object')
+        expect(data.body.weather).to.be.an('array')
+        expect(data.body.weather.length).to.equal(0)
         expect(data.body.id).to.equal(3988086)
+        done()
+      })
+  })
+  it('Should get the city 3531732', done => {
+    request(app)
+      .get('/cities/3531732')
+      .expect(200)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body).to.be.an('object')
+        expect(data.body.weather).to.be.an('array')
+        expect(data.body.weather.length).to.equal(16)
+        expect(data.body.id).to.equal(3531732)
         done()
       })
   })
