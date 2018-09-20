@@ -1,4 +1,4 @@
-# Wether API Test
+# Weather API Test
 
 ##Usage
 
