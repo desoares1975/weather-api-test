@@ -10,11 +10,13 @@ const cities = {
       return cities.filterWeather(req, res)
     }
 
-    let city = Object.assign({}, (data.cities().filter(c => c.id === +req.params.id)[0] || {}))
+    let city = Object.assign({}, (data.cities().filter(c => c.id === +req.params.id)[0]))
 
-    if (city.id) {
-      city.weather = data.weatherList()[city.id] || []
+    if (!city.id) {
+      return res.status(404).send('NOT FOUND')
     }
+
+    city.weather = data.weatherList()[city.id] || []
 
     res.status(200).json(city)
   },
@@ -29,7 +31,18 @@ const cities = {
     res.status(200).json(data.weatheredCities())
   },
   getByCoordinates (req, res) {
-    let city = data.cities().filter(c => c.coord.lat === +req.query.lat && c.coord.lon === +req.query.lon)[0] || {}
+    let lat = +req.query.lat
+    let lon = +req.query.lon
+
+    if (isNaN(lat) || isNaN(lon)) {
+      return res.status(400).send('BAD REQUEST')
+    }
+
+    let city = Object.assign({}, data.cities().filter(c => c.coord.lat === lat && c.coord.lon === lon)[0])
+
+    if (!city.id) {
+      return res.status(404).json('NOT FOUND')
+    }
 
     if (city.id) {
       city.weather = data.weatherList()[city.id] || []
@@ -38,10 +51,20 @@ const cities = {
     res.status(200).json(city)
   },
   filterWeather (req, res) {
+    let start = new Date(req.query.start)
+    let end = new Date(req.query.end)
+
+    if (start.toString() === 'Invalid Date' || end.toString() === 'Invalid Date') {
+      return res.status(400).send('BAD REQUEST')
+    }
+
+    start = start / 1000
+    end = end / 1000
+
     let city = data.cities().filter(c => c.id === +req.params.id)[0] || {}
     let weathers = data.weatherList()[city.id] || []
 
-    city.weather = weathers.filter(w => ((w.dt >= (new Date(req.query.start) / 1000)) && (w.dt <= (new Date(req.query.end) / 1000))))
+    city.weather = weathers.filter(w => ((w.dt >= (start / 1000) && (w.dt <= end))))
 
     res.status(200).json(city || {})
   }

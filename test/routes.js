@@ -34,6 +34,45 @@ describe('Test the app routes', () => {
         done()
       })
   })
+  it('Should should return 404 for unexisting city', done => {
+    request(app)
+      .get('/cities?lat=-33.856789&lon=-69.153309')
+      .expect(404)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
+  it('Should return 400 for invalid lat', done => {
+    request(app)
+      .get('/cities?lat=test&lon=-61.153309')
+      .expect(400)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
+  it('Should return 400 for invalid lon', done => {
+    request(app)
+      .get('/cities?lat=-33.856789&lon=another test')
+      .expect(400)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
   it('Should get the cities with weather', done => {
     request(app)
       .get('/cities/weather')
@@ -113,16 +152,43 @@ describe('Test the app routes', () => {
         done()
       })
   })
-  it('Should not get the city 3988 nor break', done => {
+  it('Should return 400 for invalid date on start', done => {
     request(app)
-      .get('/cities/3988')
-      .expect(200)
+      .get('/cities/3992619?start=errored-test&end=2017-03-15')
+      .expect(400)
       .end((err, data) => {
         if (err) {
           console.log(err)
         }
 
-        expect(data.body).to.be.an('object')
+        expect(data.body.weather).to.equal(undefined)
+        expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
+  it('Should return 400 for invalid date on end', done => {
+    request(app)
+      .get('/cities/3992619?start=2017-03-13&end=other error ok')
+      .expect(400)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body.weather).to.equal(undefined)
+        expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
+  it('Should not get the city 3988 nor break', done => {
+    request(app)
+      .get('/cities/3988')
+      .expect(404)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
         expect(data.body.id).to.equal(undefined)
         done()
       })
@@ -139,6 +205,18 @@ describe('Test the app routes', () => {
         expect(data.body).to.be.an('object')
         expect(data.body.weather.length).to.equal(0)
         expect(data.body.id).to.equal(3988214)
+        done()
+      })
+  })
+  it('Should return 404 in unexisting route', done => {
+    request(app)
+      .get('/test-invalid-route')
+      .expect(404)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
         done()
       })
   })
