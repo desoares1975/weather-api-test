@@ -303,9 +303,9 @@ Will return the city corresponding to the id sent as paramether, with the corres
 }
 ```
 
-####GET /cities/:id/?start=start&end=end
+####GET /cities/:id?start=start&end=end
 
-e.g. /cities/3992619/?start=2017-03-13&end=2017-03-15
+e.g. /cities/3992619?start=2017-03-13&end=2017-03-15
 
 Will return the city corresponding to the id with its weather filtered from the stat till the end period, or an empty
 JSON object (if the filter remove all the dates wethaer will be am empty array):
@@ -415,9 +415,9 @@ JSON object (if the filter remove all the dates wethaer will be am empty array):
 }
 ```
 
-####GET /cities/?lat=lat&lon=lon
+####GET /cities?lat=lat&lon=lon
 
-e.g. /cities/?lat=19.85&lon=-90.533333 or /cities/19.85/-90.533333
+e.g. /cities?lat=19.85&lon=-90.533333 or /cities/19.85/-90.533333
 
 Will return the city on the coodinates, with the corresponding weather, or an empty JSON
 (if the city has no weather it will be an empty array):

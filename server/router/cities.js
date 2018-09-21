@@ -10,7 +10,7 @@ const cities = {
       return cities.filterWeather(req, res)
     }
 
-    let city = data.cities().filter(c => c.id === +req.params.id)[0] || {}
+    let city = Object.assign({}, (data.cities().filter(c => c.id === +req.params.id)[0] || {}))
 
     if (city.id) {
       city.weather = data.weatherList()[city.id] || []

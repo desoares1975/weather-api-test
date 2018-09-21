@@ -6,9 +6,10 @@ const { expect } = require('chai')
 describe('Data testing', () => {
   it('data.cities should have length of 48', done => {
     expect(data.cities().length).to.equal(48)
+    expect(data.cities()[0].weather).to.equal(undefined)
     done()
   })
-  it('data.cities[0] should have wether with lenght of 16', done => {
+  it('data.cities[0] should not have wether', done => {
     expect(data.cities()[0].weather).to.equal(undefined)
     done()
   })

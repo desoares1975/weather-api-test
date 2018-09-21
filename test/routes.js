@@ -16,12 +16,13 @@ describe('Test the app routes', () => {
 
         expect(data.body.length).to.equal(48)
         expect(data.body[0].id).to.equal(3531732)
+        expect(data.body[0].weather).to.equal(undefined)
         done()
       })
   })
   it('Should should find city by coordinates using query string', done => {
     request(app)
-      .get('/cities/?lat=-32.856789&lon=-61.153309')
+      .get('/cities?lat=-32.856789&lon=-61.153309')
       .expect(200)
       .end((err, data) => {
         if (err) {
@@ -82,9 +83,24 @@ describe('Test the app routes', () => {
         done()
       })
   })
+  it('Should not change the data', done => {
+    request(app)
+      .get('/cities')
+      .expect(200)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body.length).to.equal(48)
+        expect(data.body[0].id).to.equal(3531732)
+        expect(data.body[0].weather).to.equal(undefined)
+        done()
+      })
+  })
   it('Should get the city 3992619 with weather form 2017-03-13 to 2017-03-15 with query string', done => {
     request(app)
-      .get('/cities/3992619/?start=2017-03-13&end=2017-03-15')
+      .get('/cities/3992619?start=2017-03-13&end=2017-03-15')
       .expect(200)
       .end((err, data) => {
         if (err) {
@@ -108,6 +124,21 @@ describe('Test the app routes', () => {
 
         expect(data.body).to.be.an('object')
         expect(data.body.id).to.equal(undefined)
+        done()
+      })
+  })
+  it('Should not break when filtering 3988214 with no weather form 2017-03-13 to 2017-03-15', done => {
+    request(app)
+      .get('/cities/3988214?start=2017-03-13&end=2017-03-15')
+      .expect(200)
+      .end((err, data) => {
+        if (err) {
+          console.log(err)
+        }
+
+        expect(data.body).to.be.an('object')
+        expect(data.body.weather.length).to.equal(0)
+        expect(data.body.id).to.equal(3988214)
         done()
       })
   })

@@ -9,13 +9,11 @@ const weatheredCities = weather.map(w => {
 })
 
 module.exports = {
+
   cities: () => cities,
   weatherList: () => weatherList,
-  weatheredCities: () => cities.slice()
-    .filter(city => weatheredCities.includes(city.id))
+  weatheredCities: () => cities.filter(city => weatheredCities.includes(city.id))
     .map(city => {
-      city.weather = weatherList[city.id]
-
-      return city
+      return Object.assign({}, city, { weather: weatherList[city.id] })
     })
 }
