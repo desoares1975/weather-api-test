@@ -9,7 +9,7 @@ describe('Data testing', () => {
     expect(data.cities()[0].weather).to.equal(undefined)
     done()
   })
-  it('data.cities[0] should not have wether', done => {
+  it('data.cities[0] should not have weather', done => {
     expect(data.cities()[0].weather).to.equal(undefined)
     done()
   })

@@ -194,7 +194,7 @@ Will return an array with all the cities that have weather list
 
 e.g. /cities/3992619
 
-Will return the city corresponding to the id sent as paramether, with the corresponding weather, or an empty JSON object
+Will return the city corresponding to the id sent as paramether, with the corresponding weather, or 404 status
 (if the city has no weather it will be an empty array):
 
 ```json
@@ -307,8 +307,9 @@ Will return the city corresponding to the id sent as paramether, with the corres
 
 e.g. /cities/3992619?start=2017-03-13&end=2017-03-15
 
-Will return the city corresponding to the id with its weather filtered from the stat till the end period, or an empty
-JSON object (if the filter remove all the dates wethaer will be am empty array):
+Will return the city corresponding to the id with its weather filtered from the stat till the end period, or 404 status
+ (if the filter remove all the dates wethaer will be am empty array):
+
 ```json
 {
     "id": 3992619,
@@ -419,7 +420,7 @@ JSON object (if the filter remove all the dates wethaer will be am empty array):
 
 e.g. /cities?lat=19.85&lon=-90.533333 or /cities/19.85/-90.533333
 
-Will return the city on the coodinates, with the corresponding weather, or an empty JSON
+Will return the city on the coodinates, with the corresponding weather, or 404 status
 (if the city has no weather it will be an empty array):
 
 ```JSON
