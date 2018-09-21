@@ -1,6 +1,6 @@
 # Weather API Test
 
-##Usage
+## Usage
 
 ### Installation
 
@@ -13,24 +13,24 @@ Save the .env.sample file as .env and set the application port:
 PORT=8900
 ```
 
-###Testing
+### Testing
 Inside the application folder type:
 ```bash
 $ npm test
 ```
 This will run all the automated tests
 
-###Cosuming the routes
+### Cosuming the routes
 Start the application:
 
 ```bash
 $ nodemon
 ```
 
-###Available Routes
+### Available Routes
 The application routes are the following:
 
-####GET /cities
+#### GET /cities
 
 Will return a json like this:
 ```json
@@ -79,7 +79,7 @@ Will return a json like this:
 ]
 ```
 
-####GET /cities/weather
+#### GET /cities/weather
 
 Will return an array with all the cities that have weather list
 ```json
@@ -190,7 +190,7 @@ Will return an array with all the cities that have weather list
 ]
 ```
 
-####GET /cities/:id
+#### GET /cities/:id
 
 e.g. /cities/3992619
 
@@ -303,7 +303,7 @@ Will return the city corresponding to the id sent as paramether, with the corres
 }
 ```
 
-####GET /cities/:id?start=start&end=end
+#### GET /cities/:id?start=start&end=end
 
 e.g. /cities/3992619?start=2017-03-13&end=2017-03-15
 
@@ -416,7 +416,7 @@ Will return the city corresponding to the id with its weather filtered from the 
 }
 ```
 
-####GET /cities?lat=lat&lon=lon
+#### GET /cities?lat=lat&lon=lon
 
 e.g. /cities?lat=19.85&lon=-90.533333 or /cities/19.85/-90.533333
 
